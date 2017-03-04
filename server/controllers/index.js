@@ -12,9 +12,9 @@ module.exports = {
   messages: {
     get: function (req, res) {
       // console.log(req);
-      res.writeHead(200, headers);
-      data = {results: [{username: 'brandon', text: 'testing', room: 'lobby'}]};
-      res.end(JSON.stringify(data));
+      // res.writeHead(200, headers);
+      // data = {results: [{username: 'brandon', text: 'testing', room: 'lobby'}]};
+      // res.end(JSON.stringify(data));
       // get data from database
       // send response along with unserialized data
 
@@ -43,8 +43,14 @@ module.exports = {
     },
     post: function (req, res) {
       /*debugger;*/
-      res.writeHead(201, headers);
-      res.end('test');
+      // console.log('DATA---', req.data);
+      req.on('data', function(chunk) {
+        console.log(chunk.toString());
+        models.users.post(chunk.toString());
+      });
+      // res.writeHead(201, headers);
+      // res.end('test');
+      /*models.users.post();*/
       // res.send('test for users');
       console.log('posting users! from controller');
     }

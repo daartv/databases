@@ -3,7 +3,7 @@ var db = require('../db');
 module.exports = {
   messages: {
     get: function () {}, // a function which produces all the messages
-    post: function () {
+    post: function (data) {
       console.log('posting messages from model');
       /*
       var queryString = 'SELECT * FROM messages';
@@ -13,14 +13,16 @@ module.exports = {
 
       */
       //use db to add to the database
+      var queryString = 'INSERT INTO messages (username, text, room)';  
     } // a function which can be used to insert a message into the database
   },
 
   users: {
     // Ditto as above.
     get: function () {},
-    post: function () {
+    post: function (chunk) {
       console.log('posting users from model');
+      db.users.post(chunk);
     }
   }
 };

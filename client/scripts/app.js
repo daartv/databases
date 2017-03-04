@@ -5,6 +5,20 @@ window.friendList = {};
 
 var app = {
   init: function() {
+    $.ajax({
+      // This is the url you should use to communicate with the parse API server.
+      url: 'http://127.0.0.1:3000/classes/users',
+      type: 'POST',
+      data: window.location.search.slice(10),
+      contentType: 'application/text',
+      success: function (data) {
+        console.log('chatterbox: Message sent');
+      },
+      error: function (data) {
+        // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
+        console.error('chatterbox: Failed to send message', data);
+      }
+    });
     $('.username').on('click', app.handleUsernameClick);
     // $('#send').on('click', app.handleSubmit);
     $('#send .submit').on('click', app.handleSubmit);
