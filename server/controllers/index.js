@@ -24,6 +24,14 @@ module.exports = {
       // get data from request
       // send to database to store
       // give response
+      console.log(req.body);
+      console.log('posting in controller!');
+      req.on('data', function (chunk) {
+        console.log('chunk', chunk);
+      });
+      res.writeHead(201, headers);
+      res.end();
+      // models.messages.post()
     } // a function which handles posting a message to the database
   },
 

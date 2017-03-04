@@ -1,34 +1,28 @@
-CREATE DATABASE chat;
+/*CREATE DATABASE chat;*/
 USE chat;
-DROP TABLE IF EXISTS `messages`;
+    
+CREATE TABLE username (
+  username_id INTEGER AUTO_INCREMENT,
+  username VARCHAR(10),
+  PRIMARY KEY (username_id)
+);
+
+CREATE TABLE room (
+  room_id INTEGER AUTO_INCREMENT,
+  room VARCHAR(10),
+  PRIMARY KEY (room_id)
+);
 CREATE TABLE messages (
   /* Describe your table here.*/
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `username` VARCHAR(10) NULL DEFAULT NULL,
-  `room` VARCHAR(10) NULL DEFAULT NULL,
-  `text` VARCHAR(120) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
-DROP TABLE IF EXISTS `username`;
-    
-CREATE TABLE `username` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `username` VARCHAR(10) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  message_id INTEGER AUTO_INCREMENT,
+  username_id INTEGER,
+  room_id INTEGER,
+  text VARCHAR(120),
+  PRIMARY KEY (message_id),
+  FOREIGN KEY (username_id) REFERENCES username(username_id),
+  FOREIGN KEY (room_id) REFERENCES room(room_id)
 );
 
--- ---
--- Table 'room'
--- 
--- ---
-
-DROP TABLE IF EXISTS `room`;
-    
-CREATE TABLE `room` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `room` VARCHAR(10) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
 /* Create other tables and define schemas for them here! */
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
