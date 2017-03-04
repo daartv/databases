@@ -13,7 +13,7 @@ var app = {
   send: function(message) {
     $.ajax({
       // This is the url you should use to communicate with the parse API server.
-      url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
+      url: 'http://127.0.0.1:3000/classes/messages',
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',
@@ -29,7 +29,7 @@ var app = {
   fetch: function() {
     $.ajax({
       // This is the url you should use to communicate with the parse API server.
-      url: 'http://parse.sfm6.hackreactor.com/chatterbox/classes/messages',
+      url: 'http://127.0.0.1:3000/classes/messages',
       type: 'GET',
       data: 'order=-createdAt',
       // data: JSON.stringify(message),
