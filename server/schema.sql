@@ -7,20 +7,14 @@ CREATE TABLE username (
   PRIMARY KEY (username_id)
 );
 
-CREATE TABLE room (
-  room_id INTEGER AUTO_INCREMENT,
-  room VARCHAR(10),
-  PRIMARY KEY (room_id)
-);
 CREATE TABLE messages (
   /* Describe your table here.*/
   message_id INTEGER AUTO_INCREMENT,
   username_id INTEGER,
-  room_id INTEGER,
+  room VARCHAR(10),
   text VARCHAR(120),
   PRIMARY KEY (message_id),
-  FOREIGN KEY (username_id) REFERENCES username(username_id),
-  FOREIGN KEY (room_id) REFERENCES room(room_id)
+  FOREIGN KEY (username_id) REFERENCES username(username_id)
 );
 
 /* Create other tables and define schemas for them here! */

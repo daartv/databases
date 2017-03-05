@@ -5,6 +5,7 @@ module.exports = {
     get: function () {}, // a function which produces all the messages
     post: function (data) {
       console.log('posting messages from model');
+      db.messages.post(data);
       /*
       var queryString = 'SELECT * FROM messages';
       var queryArgs = [];
